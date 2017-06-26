@@ -26,7 +26,7 @@
                         <div class="pull-right">
                         <div class="nav_welcome">
                             <div class="avator">
-                                <img src="imgs/gitlab-project.jpg" width="100%" />
+                                <img src="./imgs/gitlab-project.jpg" width="100%" />
                             </div>
                             管理员，晚上好</div>
                         </div>
@@ -158,12 +158,16 @@
             position: relative;
             .avator{
                 position: absolute;
-                top: .7em;
+                top: .5em;
                 left: -2.8em;
-                width: 30px;
-                height: 30px;
+                width: 35px;
+                height: 35px;
                 background-color: @text100;
                 border-radius: 50%;
+                overflow: hidden;
+                img{
+                    display: block;
+                }
             }
         }
         .active {
