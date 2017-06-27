@@ -1,13 +1,12 @@
 <template>
     <div class="home_page">
-        <banner></banner>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <about-me></about-me>
+                    <total></total>
                 </div>
-                <div class="col-md-8 col-lg-9">
-                    <all-contents></all-contents>
+                <div class="col-md-12">
+                    <echars-statistic></echars-statistic>
                 </div>
                 <div class="col-md-4 col-lg-3">3</div>
                 <div class="col-md-12">
@@ -24,20 +23,16 @@
 
 <script>
 	import {watchList} from '../api'
-	import Banner from '../components/common/Banner.vue'
-	import FooterCustom from '../components/common/Footer.vue'
-	import AboutMe from '../components/homePage/AboutMe.vue'
-	import AllContents from '../components/homePage/AllContents.vue'
-	import ShareModule from '../components/homePage/ShareModule.vue'
-    import SourceCode from '../components/homePage/SourceCode.vue'
+	import Total from '../components/home/Total.vue'
+	import EcharsStatistic from '../components/home/EcharsStatistic .vue'
+	import ShareModule from '../components/home/ShareModule.vue'
+    import SourceCode from '../components/home/SourceCode.vue'
 
 	export default {
 		name: 'home-page',
 		components: {
-			AboutMe,
-			Banner,
-			AllContents,
-			FooterCustom,
+			Total,
+			EcharsStatistic,
 			ShareModule,
 			SourceCode,
 		},
@@ -80,7 +75,7 @@
     @import "../lib/style/color";
 
     .home_page {
-
+        margin-top: 50px;
     }
 
 </style>

@@ -79,7 +79,7 @@
 		},
 		created: function () {
 			this.listenerRouting(this.$route.fullPath);
-			this.GETUSERINFO();
+//			this.GETUSERINFO();
 		},
 		data () {
 			return {
