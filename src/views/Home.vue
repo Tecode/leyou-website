@@ -8,13 +8,6 @@
                 <div class="col-md-12">
                     <echars-statistic></echars-statistic>
                 </div>
-                <div class="col-md-4 col-lg-3">3</div>
-                <div class="col-md-12">
-                    <share-module title='推荐模板'></share-module>
-                </div>
-                <div class="col-md-12">
-                    <source-code title='GitHub源码项目'></source-code>
-                </div>
             </div>
         </div>
         <footer-custom></footer-custom>
@@ -25,16 +18,14 @@
 	import {watchList} from '../api'
 	import Total from '../components/home/Total.vue'
 	import EcharsStatistic from '../components/home/EcharsStatistic .vue'
-	import ShareModule from '../components/home/ShareModule.vue'
-    import SourceCode from '../components/home/SourceCode.vue'
+	import FooterCustom from '../components/common/Footer.vue'
 
 	export default {
-		name: 'home-page',
+		name: 'home',
 		components: {
 			Total,
 			EcharsStatistic,
-			ShareModule,
-			SourceCode,
+			FooterCustom,
 		},
 		data () {
 			return {

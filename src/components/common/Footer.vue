@@ -49,7 +49,8 @@
                 float: left;
             }
         }
-        background-color: @color556;
+        background-color: @manager_color01;
+        border-top: 1px solid @color810;
         padding: 40px 0;
         margin: 45px 0 0 0;
         .QR_qq{
@@ -64,7 +65,7 @@
             width: 128px;
             height: 152px;
             margin: 0 15px;
-            border-left: 1px solid @color555;
+            border-left: 1px solid @manager_color04;
             padding-left: 15px;
         }
         .discript{
