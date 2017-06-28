@@ -5,13 +5,12 @@ import { createRouter } from './router'
 import { sync } from 'vuex-router-sync'
 import titleMixin from './util/title'
 import * as filters from './util/filters'
-// 引入饿了吗的ui
-import './static/styles/pagination.min.css'
-import {
-	Pagination,
-} from 'element-ui'
+// 引入Material的ui
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+import './static/styles/custom.css'
 
-Vue.use(Pagination);
+Vue.use(MuseUI);
 
 // mixin for handling title
 Vue.mixin(titleMixin);

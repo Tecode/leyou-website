@@ -10,7 +10,7 @@
                             </div>
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">概况</router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/discover'}" to="/discover">用户列表
+                        <router-link class="nav_link" :class="{active : activeNav === '/userlist'}" to="/userlist">用户列表
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/share'}" to="/share">文章列表
                         </router-link>
@@ -35,7 +35,6 @@
             </div>
         </div>
         <login-register></login-register>
-        <message></message>
         <transition name="fade" mode="out-in">
             <router-view class="view"></router-view>
         </transition>
@@ -43,7 +42,6 @@
 </template>
 <script>
 	import LoginRegister from './components/bombBox/LoginRegister.vue';
-	import Message from './components/common/Message.vue';
 	import {mapState} from 'vuex';
 	import {mapActions} from 'vuex';
 	import {mapGetters} from 'vuex';
@@ -54,7 +52,6 @@
 		props: ['id'],
 		components: {
 			LoginRegister,
-			Message
 		},
 		computed: {
 			...mapState({
@@ -100,7 +97,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
     .view {
-        margin-top: 40px;
+        margin-top: 50px;
     }
 
     .header {

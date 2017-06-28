@@ -5,7 +5,7 @@ const Home = r => require.ensure([], () => r(require('../views/Home.vue')));
 const UpdateLog = r => require.ensure([], () => r(require('../views/UpdateLog.vue')));
 const Message = r => require.ensure([], () => r(require('../views/Message.vue')));
 const Share = r => require.ensure([], () => r(require('../views/Share.vue')));
-const Discover = r => require.ensure([], () => r(require('../views/Discover.vue')));
+const UserList = r => require.ensure([], () => r(require('../views/UserList.vue')));
 
 Vue.use(Router);
 
@@ -15,7 +15,7 @@ export function createRouter () {
     scrollBehavior: () => ({ y: 0 }),
     routes: [
       { path: '/', component: Home },
-      { path: '/discover/:page(\\d+)?', component: Discover },
+      { path: '/userlist/:page(\\d+)?', component: UserList },
       { path: '/share/:page(\\d+)?', component: Share },
       { path: '/message/:page(\\d+)?', component: Message },
       { path: '/updatelog/:page(\\d+)?', component: UpdateLog },

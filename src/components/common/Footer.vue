@@ -38,7 +38,6 @@
 <style lang="less" scoped>
     @import "../../lib/style/color";
     .footer_coustm{
-        min-width: 640px;
         .footer_coustm_box{
             width: 600px;
             margin: 0 auto;
@@ -62,7 +61,7 @@
         .QR_wechat{
             background: url("../../imgs/wechat_QRcode.jpg")15px 0 no-repeat;
             background-size: 128px;
-            width: 128px;
+            width: 148px;
             height: 152px;
             margin: 0 15px;
             border-left: 1px solid @manager_color04;

@@ -35,6 +35,7 @@ html,body{
   height: 100%;
   //background-color: #fed919;
   background-color: #f8f9fb;
+  overflow: auto;
 }
 .clearfix:after {
   content: "";     /*内容为“.”就是一个英文的句号而已。也可以不写。*/
@@ -397,11 +398,16 @@ ul li{
   //padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  min-width: 760px;
+  min-width: 860px;
 }
 @media (min-width: 992px) {
   .container {
     width: 970px;
+  }
+}
+@media (max-width: 992px) {
+  .col-md-12{
+    width: 100%;
   }
 }
 @media (min-width: 1280px) {

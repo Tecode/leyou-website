@@ -62,11 +62,11 @@
 	}
 </script>
 
-<style lang="less">
-    @import "../lib/style/color";
+<!--<style lang="less">-->
+    <!--@import "../lib/style/color";-->
 
-    .home_page {
-        margin-top: 50px;
-    }
+    <!--.home_page {-->
+        <!---->
+    <!--}-->
 
-</style>
+<!--</style>-->
