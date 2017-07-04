@@ -2,8 +2,9 @@
     <div class="single_content_box">
         <div class="single_content clearfix">
             <div class="pull-left">
-                <label class="check_box" for="check"></label>
-                <input style="visibility: hidden" id="check" type="checkbox"/>
+                <label class="check_box select_active" for="check">
+                    <input style="visibility: hidden" id="check" type="checkbox"/>
+                </label>
             </div>
             <ul class="clearfix pull-left">
                 <li class="image_box pull-left"></li>
@@ -14,7 +15,7 @@
                 <li class="use_time pull-left">注册时间：2015-10-27</li>
                 <li class="account pull-left">账号：7487545@qq.com</li>
                 <li class="status pull-left">
-                    <span>正常</span>
+                    <span class="normal">正常</span>
                 </li>
             </ul>
             <div class="jurisdiction pull-right">修改权限</div>
@@ -48,9 +49,16 @@
             .check_box{
                 width: 18px;
                 height: 18px;
+                border: 2px solid @manager_color10;
                 display: block;
-                background-color: @background-color50;
                 margin: 15px 25px 0 15px;
+                cursor: pointer;
+                transition: all .3s;
+            }
+            .select_active{
+                background: url("../../imgs/icon-allright.png")center center no-repeat;
+                background-size: 11px;
+                border-color: @background-color50;
             }
             .image_box{
                 background-image: url("../../imgs/demo_image.jpg");
@@ -83,6 +91,18 @@
                 }
                 .status{
                     padding: 9px;
+                    .warning{
+                        background-color: @manager_color13;
+                        color: @manager_color14;
+                        padding: 2px 10px;
+                        border-radius: 999px;
+                    }
+                    .normal{
+                        background-color: @manager_color11;
+                        color: @manager_color12;
+                        padding: 2px 10px;
+                        border-radius: 999px;
+                    }
                 }
             }
             .jurisdiction{
