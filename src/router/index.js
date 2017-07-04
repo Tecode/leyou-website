@@ -6,6 +6,7 @@ const UpdateLog = r => require.ensure([], () => r(require('../views/UpdateLog.vu
 const Message = r => require.ensure([], () => r(require('../views/Message.vue')));
 const ArticleList = r => require.ensure([], () => r(require('../views/ArticleList.vue')));
 const UserList = r => require.ensure([], () => r(require('../views/UserList.vue')));
+const UpdateLogEdite = r => require.ensure([], () => r(require('../views/UpdateLogEdite.vue')));
 
 Vue.use(Router);
 
@@ -19,7 +20,7 @@ export function createRouter () {
       { path: '/articlelist/:page(\\d+)?', component: ArticleList },
       { path: '/message/:page(\\d+)?', component: Message },
       { path: '/updatelog/:page(\\d+)?', component: UpdateLog },
-      // { path: '/item/:id(\\d+)', component: ItemView },
+      { path: '/updatelogedite/:page(\\d+)?', component: UpdateLogEdite },
       // { path: '/user/:id', component: UserView },
       // { path: '/', redirect: '/top' }
     ]
