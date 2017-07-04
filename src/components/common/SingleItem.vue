@@ -25,7 +25,7 @@
                     <span>20</span>
                 </div>
             </div>
-            <div class="date_time">今天08:30</div>
+            <div class="edite">编辑</div>
         </div>
     </div>
 </template>
@@ -115,12 +115,13 @@
                     color: @color808;
                 }
             }
-            .date_time{
+            .edite{
                 position: absolute;
                 top: 12px;
                 right: 15px;
                 font-size: 14px;
                 color: @color808;
+                cursor: pointer;
             }
             .comment_view{
                 position: absolute;

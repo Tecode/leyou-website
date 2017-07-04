@@ -1,6 +1,5 @@
 <template>
     <div class="mesege_box">
-        <banner></banner>
         <div class="container">
             <div class="row">
                 <ul class="col-md-7 col-md-offset-3 line">
@@ -24,13 +23,11 @@
 </template>
 
 <script>
-	import Banner from '../components/message/Banner.vue'
 	import MessageItem from '../components/message/MessageItem.vue'
 	import NavFooter from '../components/common/Footer.vue'
 	export default {
 		name: 'comment',
 		components: {
-			Banner,
 			MessageItem,
 			NavFooter
 		},

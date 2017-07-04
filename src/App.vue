@@ -12,17 +12,21 @@
                         <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">概况</router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/userlist'}" to="/userlist">用户列表
                         </router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/share'}" to="/share">文章列表
+                        <router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">
                             更新日志
                         </router-link>
-                        <!--<div v-if="!userInfo.user_name" class="pull-right">-->
-                            <!--<a @click="loginRegistration('login')" class="nav_link">登录</a>-->
-                            <!--<a @click="loginRegistration('registration')" class="nav_link">注册</a>-->
-                        <!--</div>-->
+                        <!--<a class="nav_link" :class="{active : activeNav === '/more'}" to="/more">更多-->
+                            <!--<div>-->
+                            <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                            <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
+                            <!--</div>-->
+                        <!--</a>-->
                         <div class="pull-right">
                         <div class="nav_welcome">
                             <div class="avator">

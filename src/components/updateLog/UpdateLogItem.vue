@@ -3,6 +3,7 @@
         <div class="clearfix title_box">
             <span class="title active pull-left">1.0.0</span>
             <span class="lable pc pull-left">电脑端</span>
+            <span class="lable modify pull-left">修改</span>
             <p class="date">2017-05-12</p>
         </div>
         <ul>
@@ -69,6 +70,10 @@
         .pc{
             background-color: #f6baaf;
             color: #f66e54;
+        }
+        .modify{
+            background-color: #e6e6e6;
+            cursor: pointer;
         }
         ul li{
             font-size: 14px;

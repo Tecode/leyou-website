@@ -1,8 +1,5 @@
 <template>
     <div class="update_log">
-        <h3 class="big_title text-center">
-            <span>博客更新日志</span>
-        </h3>
         <div class="container">
             <div class="row">
                 <ul class="col-md-7 col-md-offset-3 time-line">
@@ -42,18 +39,6 @@
 <style lang="less" scoped>
     @import "../lib/style/color";
     .update_log{
-        .big_title{
-            span{
-                font-size: 24px;
-                color: @color400;
-                font-weight: 400;
-                background-color: @background-color50;
-                padding: 3px 35px;
-                line-height: 4em;
-                border-radius: 99px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-            }
-        }
         background-color: @white100;
         width: 100%;
         height: 100%;
