@@ -7,6 +7,7 @@ const Message = r => require.ensure([], () => r(require('../views/Message.vue'))
 const ArticleList = r => require.ensure([], () => r(require('../views/ArticleList.vue')));
 const UserList = r => require.ensure([], () => r(require('../views/UserList.vue')));
 const UpdateLogEdite = r => require.ensure([], () => r(require('../views/UpdateLogEdite.vue')));
+const ArticleEdit = r => require.ensure([], () => r(require('../views/ArticleEdit.vue')));
 
 Vue.use(Router);
 
@@ -21,6 +22,7 @@ export function createRouter () {
       { path: '/message/:page(\\d+)?', component: Message },
       { path: '/updatelog/:page(\\d+)?', component: UpdateLog },
       { path: '/updatelogedite/:page(\\d+)?', component: UpdateLogEdite },
+			{ path: '/articleedit/:page(\\d+)?', component: ArticleEdit },
       // { path: '/user/:id', component: UserView },
       // { path: '/', redirect: '/top' }
     ]
