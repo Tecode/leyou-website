@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <nav-title
+        <nav-title class="update_log"
                   nav_title="编辑更新日志"
                   placeholder_text="账号名称或账号，回车">
         </nav-title>
@@ -26,22 +26,8 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-.user-view
-  background-color #fff
-  box-sizing border-box
-  padding 2em 3em
-  h1
-    margin 0
-    font-size 1.5em
-  .meta
-    list-style-type none
-    padding 0
-  .label
-    display inline-block
-    min-width 4em
-  .about
-    margin 1em 0
-  .links a
-    text-decoration underline
+<style lang="less" scoped>
+  .update_log{
+    margin-bottom: 40px;
+  }
 </style>

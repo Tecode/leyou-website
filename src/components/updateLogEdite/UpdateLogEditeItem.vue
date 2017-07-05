@@ -36,8 +36,8 @@
         </li>
         <li class="tips clearfix">
             <p>提示：编辑完成后记得保存</p>
-            <p>保存</p>
-            <p>新增更新说明</p>
+            <p class="save">保存</p>
+            <p class="add-tips">新增更新说明</p>
         </li>
     </ul>
 </template>
@@ -139,6 +139,7 @@
                 text-align: center;
                 line-height: 2.4em;
                 transition: all .4s;
+                cursor: pointer;
                 &:hover {
                     background-color: @background-color350;
                 }
@@ -148,9 +149,23 @@
             width: 720px;
             p {
                 float: right;
+                cursor: pointer;
+                color: @color808;
                 &:first-child {
                     float: left;
+                    padding-top: 5px;
                 }
+            }
+            .save{
+                padding: 5px 16px;
+                background-color: @manager_color16;
+                color: @white;
+            }
+            .add-tips{
+                padding: 5px 16px;
+                background-color: @background-color50;
+                color: @text100;
+                margin: 0 25px 0 0;
             }
         }
     }
