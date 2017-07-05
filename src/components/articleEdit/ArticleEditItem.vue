@@ -36,7 +36,7 @@
         </li>
         <li class="content">
             <div class="title">编辑内容</div>
-            44545
+            <div id="Edit"></div>
         </li>
         <li class="tips clearfix">
             <p>提示：编辑完成后记得保存</p>
@@ -48,6 +48,7 @@
 
 <script>
 	import AticalTitle from '../common/Title.vue'
+
 	export default {
 		name: 'comment',
 		props: ['id'],
@@ -58,6 +59,12 @@
 			return {
 				open: true
 			}
+		},
+		mounted: function () {
+			const E = window.wangEditor;
+			const editor = new E('#Edit');
+			editor.customConfig.uploadImgShowBase64 = true;
+			editor.create()
 		},
 		computed: {},
 		methods: {}
@@ -70,7 +77,7 @@
     .update-logedite {
         position: relative;
         padding-left: 25px;
-        &:before{
+        &:before {
             content: "";
             display: block;
             position: absolute;
@@ -80,10 +87,10 @@
             height: 100%;
             background-color: @background-color50;
         }
-        li{
+        li {
             margin-bottom: 20px;
             position: relative;
-            &:before{
+            &:before {
                 content: "";
                 display: block;
                 position: absolute;
@@ -150,7 +157,6 @@
             }
         }
         .tips {
-            width: 720px;
             p {
                 float: right;
                 cursor: pointer;
@@ -160,12 +166,12 @@
                     padding-top: 5px;
                 }
             }
-            .save{
+            .save {
                 padding: 5px 16px;
                 background-color: @manager_color16;
                 color: @white;
             }
-            .add-tips{
+            .add-tips {
                 padding: 5px 16px;
                 background-color: @background-color50;
                 color: @text100;

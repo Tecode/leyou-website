@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-12">
                 <nav-title class="nav_article"
                         nav_title="文章编辑"
                         placeholder_text="账号名称或账号，回车">
