@@ -9,8 +9,13 @@ import * as filters from './util/filters'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import './static/styles/custom.css'
+//引入饿了吗ui
+import { Upload } from 'element-ui'
+import 'element-ui/lib/theme-default/icon.css'
+import './static/styles/upload.css'
 
 Vue.use(MuseUI);
+Vue.use(Upload);
 
 // mixin for handling title
 Vue.mixin(titleMixin);

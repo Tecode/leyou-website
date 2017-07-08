@@ -35,6 +35,26 @@
             </div>
         </li>
         <li class="content">
+            <div class="title">图片上传</div>
+            <div>
+                <el-upload
+                        class="upload-demo"
+                        drag
+                        action="/upload"
+                        multiple>
+                    <i class="el-icon-upload"></i>
+                    <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+                    <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                </el-upload>
+            </div>
+            <div>
+                <label>
+                    <input type="text" placeholder="描述"/>
+                    <span class="delete">删除</span>
+                </label>
+            </div>
+        </li>
+        <li class="content">
             <div class="title">编辑内容</div>
             <div id="Edit"></div>
         </li>
