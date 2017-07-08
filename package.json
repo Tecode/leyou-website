@@ -28,6 +28,7 @@
     "express-useragent": "^1.0.7",
     "extract-text-webpack-plugin": "^2.1.0",
     "firebase": "^3.7.2",
+    "formidable": "^1.1.1",
     "lru-cache": "^4.0.2",
     "moment": "^2.18.1",
     "muse-ui": "^2.0.3",
