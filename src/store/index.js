@@ -4,6 +4,8 @@ import Vuex from 'vuex';
 import LoginRegistration from './modules/LoginRegistration';
 import NavHeader from './modules/NavHeader';
 import Message from './modules/Message';
+import ArticleEdit from './modules/ArticleEdit';
+import Ui from './modules/Ui';
 
 Vue.use(Vuex);
 
@@ -12,7 +14,9 @@ export function createStore () {
 		modules: {
 			LoginRegistration: LoginRegistration,
 			NavHeader: NavHeader,
-			Message:Message,
+			Message: Message,
+			ArticleEdit: ArticleEdit,
+			Ui: Ui,
 		}
   })
 }

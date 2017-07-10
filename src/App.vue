@@ -11,34 +11,45 @@
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">概况</router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/userlist'}" to="/userlist">用户列表
+
                         </router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表
+                        <router-link class="nav_link" :class="{active : activeNav === '/articlelist'}"
+                                     to="/articlelist">文章列表
+
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/message'}" to="/message">留言
+
                         </router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/updatelog'}" to="/updatelog">
                             更新日志
+
                         </router-link>
                         <!--<a class="nav_link" :class="{active : activeNav === '/more'}" to="/more">更多-->
-                            <!--<div>-->
-                            <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
-                            <!--</div>-->
-                            <!--<div>-->
-                            <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
-                            <!--</div>-->
+                        <!--<div>-->
+                        <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
+                        <!--</div>-->
+                        <!--<div>-->
+                        <!--<router-link class="nav_link" :class="{active : activeNav === '/articlelist'}" to="/articlelist">文章列表</router-link>-->
+                        <!--</div>-->
                         <!--</a>-->
                         <div class="pull-right">
-                        <div class="nav_welcome">
-                            <div class="avator">
-                                <img src="./imgs/gitlab-project.jpg" width="100%" />
+                            <div class="nav_welcome">
+                                <div class="avator">
+                                    <img src="./imgs/gitlab-project.jpg" width="100%"/>
+                                </div>
+                                管理员，晚上好
                             </div>
-                            管理员，晚上好</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <login-register></login-register>
+        <mu-dialog :open="dialog" :title="title" @close="closeDialog">
+            {{content}}
+            <mu-flat-button v-if="button" slot="actions" @click="closeDialog" primary label="取消"/>
+            <mu-flat-button v-if="button && multiple" slot="actions" primary @click="closeDialog" label="确定"/>
+        </mu-dialog>
         <transition name="fade" mode="out-in">
             <router-view class="view"></router-view>
         </transition>
@@ -61,6 +72,11 @@
 			...mapState({
 				activeNav: state => state.NavHeader.activeNav,
 				userInfo: state => state.NavHeader.userInfo,
+				dialog: state => state.Ui.dialog,
+				title: state => state.Ui.title,
+				content: state => state.Ui.content,
+				button: state => state.Ui.button,
+				multiple: state => state.Ui.multiple,
 			}),
 			...mapGetters({
 				doneTodosCount: 'doneTodosCount'
@@ -72,7 +88,9 @@
 			}),
 			...mapMutations({
 				listenerRouting: 'listenerRouting', // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
-				loginRegistration: 'loginRegistration'
+				loginRegistration: 'loginRegistration',
+				closeDialog: 'CLOSE_DIALOG',
+				openDialog: 'OPEN_DIALOG',
 			}),
 			fetchData(){
 				this.listenerRouting(this.$route.fullPath);
@@ -100,6 +118,7 @@
     body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     }
+
     .view {
         margin-top: 50px;
     }
@@ -151,13 +170,13 @@
                 color: @manager_color02;
             }
         }
-        .nav_welcome{
+        .nav_welcome {
             height: 40px;
             line-height: 3.4em;
             cursor: pointer;
             font-size: 15px;
             position: relative;
-            .avator{
+            .avator {
                 position: absolute;
                 top: .5em;
                 left: -2.8em;
@@ -166,7 +185,7 @@
                 background-color: @text100;
                 border-radius: 50%;
                 overflow: hidden;
-                img{
+                img {
                     display: block;
                 }
             }

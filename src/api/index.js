@@ -20,3 +20,8 @@ export const registerRequestApi = (param) => {
 export const getUserInfoApi = (param) => {
 	return axios.get('/application/api/userInfo');
 };
+
+// 保存文章api
+export const saveArticelApi = (param) => {
+	return axios.post('/application/api/userInfo', param);
+};

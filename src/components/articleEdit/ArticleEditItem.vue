@@ -4,54 +4,55 @@
             <div class="number">文章标题（必填字段）</div>
             <div class="input">
                 <label>
-                    <input type="text" placeholder="文章标题（必填字段）"/>
+                    <input id="title" @input="articleInput" type="text" v-model="title" placeholder="文章标题（必填字段）"/>
                 </label>
             </div>
         </li>
         <li class="device">
             <div class="type">文章分类（必选字段）</div>
             <div class="span_box">
-                <span>电脑端</span>
-                <span>移动端</span>
-                <span>小程序</span>
-                <span>APP客户端</span>
-                <span>PC客户端</span>
-                <span>后台</span>
+                <span @click="choiceType(100)" :class="{active: articleType === 100}">电脑端</span>
+                <span @click="choiceType(101)" :class="{active: articleType === 101}">移动端</span>
+                <span @click="choiceType(102)" :class="{active: articleType === 102}">小程序</span>
+                <span @click="choiceType(103)" :class="{active: articleType === 103}">APP客户端</span>
+                <span @click="choiceType(104)" :class="{active: articleType === 104}">PC客户端</span>
             </div>
         </li>
         <li class="content">
             <div class="title">发表文章说明</div>
             <div>
                 <label>
-                    <input type="text" placeholder="描述"/>
-                    <span class="delete">删除</span>
+                    <input type="text" id="author" @input="articleInput" v-model="author" placeholder="编辑"/>
+                    <span class="delete">编辑</span>
                 </label>
             </div>
             <div>
                 <label>
-                    <input type="text" placeholder="描述"/>
-                    <span class="delete">删除</span>
+                    <input type="text" id="keyWords" @input="articleInput" v-model="keyWords" placeholder="关键词"/>
+                    <span class="keywords">关键词</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input id="discript" @input="articleInput" type="text" v-model="discript" placeholder="文章描述"/>
+                    <span class="discript">文章描述</span>
                 </label>
             </div>
         </li>
-        <li class="content">
+        <li class="image-update">
             <div class="title">图片上传</div>
-            <div>
+            <div class="update-box clearfix">
                 <el-upload
-                        class="upload-demo"
+                        class="upload-demo pull-left"
                         drag
                         action="/upload"
-                        multiple>
+                        :on-success="imageOk"
+                        accept="image">
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
                     <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
                 </el-upload>
-            </div>
-            <div>
-                <label>
-                    <input type="text" placeholder="描述"/>
-                    <span class="delete">删除</span>
-                </label>
+                <div class="image pull-left" :style="{backgroundImage: `url(${updateImage})`}"></div>
             </div>
         </li>
         <li class="content">
@@ -60,7 +61,7 @@
         </li>
         <li class="tips clearfix">
             <p>提示：编辑完成后记得保存</p>
-            <p class="save">保存</p>
+            <p class="save" @click="articleSave(getContent)">保存</p>
             <p class="add-tips">新增更新说明</p>
         </li>
     </ul>
@@ -68,6 +69,8 @@
 
 <script>
 	import AticalTitle from '../common/Title.vue'
+	import {mapMutations, mapState, mapActions} from 'vuex';
+	let editor = '';
 
 	export default {
 		name: 'comment',
@@ -82,7 +85,7 @@
 		},
 		mounted: function () {
 			const E = window.wangEditor;
-			const editor = new E('#Edit');
+			editor = new E('#Edit');
 			editor.customConfig.uploadImgShowBase64 = true;
 			editor.customConfig.zIndex = 100;
 			editor.customConfig.uploadImgHooks = {
@@ -110,16 +113,15 @@
 				// 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
 				// （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
 				customInsert: function (insertImg, result, editor) {
-					console.log(result);
 					// 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
 					// insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
 
 					// 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
-                    if (result) {
-                    	result.data.map( (url) => {
-						    insertImg(url)
-                        })
-                    }
+					if (result) {
+						result.data.map((url) => {
+							insertImg(url)
+						})
+					}
 
 					// result 必须是一个 JSON 格式字符串！！！否则报错
 				}
@@ -127,11 +129,35 @@
 			// 将图片大小限制为 3M
 			editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
 			editor.customConfig.uploadImgServer = '/upload';
-
-			editor.create()
+			editor.create();
 		},
-		computed: {},
-		methods: {}
+		computed: {
+			...mapState({
+				title: state => state.ArticleEdit.title,
+				articleType: state => state.ArticleEdit.articleType,
+				author: state => state.ArticleEdit.author,
+				keyWords: state => state.ArticleEdit.keyWords,
+				discript: state => state.ArticleEdit.discript,
+				updateImage: state => state.ArticleEdit.updateImage,
+				content: state => state.ArticleEdit.content,
+			}),
+		},
+		methods: {
+			imageOk: function (response, file, fileLis) {
+				this.thumbnail(response.data[0])
+			},
+			getContent: function() {
+				return editor.txt.html()
+            },
+			...mapMutations({
+				articleInput: 'ARTICLE_INPUT',
+				choiceType: 'ARTICLE_CHOICE_TYPE',
+				thumbnail: 'THUMBNAIL_SAVE'
+			}),
+			...mapActions({
+				articleSave: 'ARTICLE_SAVE'
+			})
+		},
 	}
 </script>
 
@@ -174,6 +200,7 @@
             outline: none;
             text-indent: .5em;
             margin: 10px 0;
+            border: 1px solid @color204;
         }
         .version {
             .number {
@@ -194,6 +221,13 @@
                 border: 1px solid @background-color50;
                 margin: 0 15px 0 0;
                 color: @background-color50;
+                cursor: pointer;
+                transition: all .4s;
+            }
+            .active {
+                color: @manager_color16;
+                border: 1px solid @manager_color16;
+                background-color: #ffffff;
             }
         }
         .content {
@@ -209,7 +243,37 @@
                 position: absolute;
                 top: -7px;
                 right: 0;
-                width: 50px;
+                width: 60px;
+                height: 34px;
+                background-color: @background-color50;
+                text-align: center;
+                line-height: 2.4em;
+                transition: all .4s;
+                cursor: pointer;
+                &:hover {
+                    background-color: @background-color350;
+                }
+            }
+            .keywords {
+                position: absolute;
+                top: -7px;
+                right: 0;
+                width: 70px;
+                height: 34px;
+                background-color: @background-color50;
+                text-align: center;
+                line-height: 2.4em;
+                transition: all .4s;
+                cursor: pointer;
+                &:hover {
+                    background-color: @background-color350;
+                }
+            }
+            .discript {
+                position: absolute;
+                top: -7px;
+                right: 0;
+                width: 80px;
                 height: 34px;
                 background-color: @background-color50;
                 text-align: center;
@@ -245,6 +309,20 @@
         }
         #Edit {
             min-height: 800px;
+        }
+        .image-update {
+            .title {
+                font-size: 16px;
+                color: @manager_color15;
+                margin-bottom: 15px;
+            }
+            .image {
+                width: 360px;
+                height: 180px;
+                background-color: #f1f1f1;
+                border-radius: 6px;
+                background-size: cover;
+            }
         }
     }
 </style>
