@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const Login = r => require.ensure([], () => r(require('../views/Login.vue')));
 const Home = r => require.ensure([], () => r(require('../views/Home.vue')));
 const UpdateLog = r => require.ensure([], () => r(require('../views/UpdateLog.vue')));
 const Message = r => require.ensure([], () => r(require('../views/Message.vue')));
@@ -16,7 +17,8 @@ export function createRouter () {
     mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [
-      { path: '/', component: Home },
+			{ path: '/', component: Login },
+      { path: '/home', component: Home },
       { path: '/userlist/:page(\\d+)?', component: UserList },
       { path: '/articlelist/:page(\\d+)?', component: ArticleList },
       { path: '/message/:page(\\d+)?', component: Message },

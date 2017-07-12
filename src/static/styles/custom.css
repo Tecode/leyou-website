@@ -223,10 +223,10 @@ a {
   border-color: #ff4081;
 }
 .mu-linear-progress {
-  background-color: #bdbdbd;
+  background-color: #fafafa;
 }
 .mu-linear-progress-indeterminate {
-  background-color: #fed919;
+  background-color: #ff7300;
 }
 .mu-linear-progress-determinate {
   background-color: #fed919;

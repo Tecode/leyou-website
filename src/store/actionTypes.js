@@ -4,6 +4,7 @@ export const loginRegistration = 'loginRegistration';
 export const closePopup = 'closePopup';
 export const request = 'request';
 export const inputContent = 'inputContent';
+export const INPUTEMAIL= 'INPUTEMAIL';
 // 登录注册action
 export const loginRequest = 'loginRequest';
 export const registerRequest = 'registerRequest';

@@ -1,15 +1,15 @@
 <template>
     <div id="app">
-        <div class="header">
+        <div class="header" v-if="activeNav !== '/'">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 clearfix">
-                        <router-link to="/" exact>
+                        <router-link to="/home" exact>
                             <div class="logo_lage">
                                 <span>Dev</span>
                             </div>
                         </router-link>
-                        <router-link class="nav_link" :class="{active : activeNav === '/'}" to="/">概况</router-link>
+                        <router-link class="nav_link" :class="{active : activeNav === '/home'}" to="/home">概况</router-link>
                         <router-link class="nav_link" :class="{active : activeNav === '/userlist'}" to="/userlist">用户列表
 
                         </router-link>
@@ -51,7 +51,7 @@
             <mu-flat-button v-if="button && multiple" slot="actions" primary @click="closeDialog" label="确定"/>
         </mu-dialog>
         <transition name="fade" mode="out-in">
-            <router-view class="view"></router-view>
+            <router-view class="{view: activeNav !== '/'}"></router-view>
         </transition>
     </div>
 </template>

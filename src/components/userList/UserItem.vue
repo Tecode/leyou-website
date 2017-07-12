@@ -1,6 +1,6 @@
 <template>
-    <div class="single_content_box">
-        <div class="single_content clearfix">
+    <div class="single_content_boxs">
+        <div class="single_contents clearfix">
             <div class="pull-left">
                 <label class="check_box select_active" for="check">
                     <input style="visibility: hidden" id="check" type="checkbox"/>
@@ -39,8 +39,8 @@
 
 <style lang="less" scoped>
     @import "../../lib/style/color";
-    .single_content_box{
-        .single_content{
+    .single_content_boxs{
+        .single_contents{
             margin-top: 15px;
             background-color: @white;
             box-shadow: @box-shadow26;
