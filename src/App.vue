@@ -47,8 +47,8 @@
         <login-register></login-register>
         <mu-dialog :open="dialog" :title="title" @close="closeDialog">
             {{content}}
-            <mu-flat-button v-if="button" slot="actions" @click="closeDialog" primary label="取消"/>
-            <mu-flat-button v-if="button && multiple" slot="actions" primary @click="closeDialog" label="确定"/>
+            <mu-flat-button v-if="button" slot="actions" @click="closeDialog" primary label="明白了"/>
+            <mu-flat-button v-if="button && multiple" slot="actions" primary @click="closeDialog" label="取消"/>
         </mu-dialog>
         <transition name="fade" mode="out-in">
             <router-view class="{view: activeNav !== '/'}"></router-view>
@@ -98,7 +98,9 @@
 		},
 		created: function () {
 			this.listenerRouting(this.$route.fullPath);
-//			this.GETUSERINFO();
+			if (this.fullPath !=='/'){
+                 this.GETUSERINFO();
+            }
 		},
 		data () {
 			return {

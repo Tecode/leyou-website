@@ -10,7 +10,8 @@ const ArticleEdit = {
 		title: '',
 		button: true,
 		multiple: true,
-		content: ''
+		content: '',
+		callBack: () => {},
 	},
 	mutations: {
 		[CLOSE_DIALOG](state) {
@@ -19,6 +20,8 @@ const ArticleEdit = {
 			state.content = '';
 			state.button = true;
 			state.multiple = true;
+			state.callBack();
+			state.callBack = () =>{};
 		},
 		[OPEN_DIALOG](state, {
 										title,
@@ -26,13 +29,16 @@ const ArticleEdit = {
 										button = true,
 										multiple = true,
 								 		timer,
+										callBack,
 									}) {
-			console.log('9999999999999999***********');
 			state.dialog = true;
 			state.title = title;
 			state.content = content;
 			state.button = button;
 			state.multiple = multiple;
+			if(callBack){
+				state.callBack = callBack;
+			}
 			if (timer) {
 				setTimeout(() => {
 					state.dialog = false;

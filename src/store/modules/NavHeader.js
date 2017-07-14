@@ -22,7 +22,14 @@ const LoginRegistration = {
 				commit('SETUSERINFO', response.data);
 			}))
 			.catch((err) => {
-				console.log(err.response.data);
+				commit('OPEN_DIALOG',{
+					title: '错误提示',
+					content: err.response.data.error,
+					button: true,
+					multiple: false,
+					timer: null,
+					callBack: () => { window.location.href = '/' }
+				});
 			})
 		}
 	},

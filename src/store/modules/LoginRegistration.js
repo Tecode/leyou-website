@@ -124,7 +124,7 @@ const LoginRegistration = {
 				}).catch((err) => {
 					commit('OPEN_DIALOG',{
 						title: '错误提示',
-						content: err.response.data,
+						content: err.response.data.error,
 						button: false,
 						multiple: false,
 						timer: 1500
@@ -132,9 +132,9 @@ const LoginRegistration = {
 					commit('request', {
 						loading: false,
 						isError: true,
-						data: err.response.data
+						data: err.response.data.error
 					});
-					console.log(err.response.data.error);
+					// console.log(err.response.data.error);
 				});
 			}
 		},
