@@ -17,13 +17,13 @@ export const registerRequestApi = (param) => {
 	return axios.post('/application/api/register', param);
 };
 
-export const getUserInfoApi = (param) => {
+export const getUserInfoApi = () => {
 	return axios.get('/application/api/userInfo');
 };
 
 // 保存文章api
 export const saveArticelApi = (param) => {
-	return axios.post('/application/api/addArticle', param);
+	return axios.post('/application/api/article', param);
 };
 // 更新文章api
 export const updateArticelApi = (id, param) => {

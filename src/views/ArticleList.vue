@@ -15,9 +15,10 @@
                             v-if="articleData.length !== 0"
                             class="user_page"
                             :total="total"
+                            :defaultPageSize="size"
                             @pageChange="pageChange"
-                            :pageSize="size"
-                            :current="1"></mu-pagination>
+                            :current="index"
+                            :pageSize="size"></mu-pagination>
                 </div>
             </div>
         </div>

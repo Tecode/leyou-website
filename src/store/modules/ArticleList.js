@@ -11,7 +11,7 @@ const ArticleList = {
 		total: 1
 	},
 	mutations: {
-		[SETLIST_ARTICLE_DATA](state, data, total){
+		[SETLIST_ARTICLE_DATA](state, {data, total}){
 			state.articleData = data;
 			state.total = total;
 		}
@@ -24,10 +24,10 @@ const ArticleList = {
 				response.data.data.forEach((item) => {
 					item['month'] = moment.unix(item.time).format('MMM');
 					item['day'] = moment.unix(item.time).format('DD');
-					item['type'] = item['type'].split(',');
+					item['type'] = item['type'].split('，');
 					newArr = [...newArr,item]
 				});
-				commit('SETLIST_ARTICLE_DATA', newArr, response.data.total);
+				commit('SETLIST_ARTICLE_DATA', {data:newArr, total:response.data.total});
 			})
 			.catch((err) => {
 				commit('OPEN_DIALOG',{
