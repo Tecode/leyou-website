@@ -6,6 +6,7 @@
                     <nav-title
                             nav_title="文章列表">
                     </nav-title>
+                    <div class="add_button" @click="addArticle">添加文章</div>
                     <single-item
                             v-for="item in articleData"
                             :item = "item"
@@ -60,6 +61,9 @@
 					size: this.size,
 				});
 			},
+			addArticle: function () {
+			    this.$router.push('/articleedit');
+			},
 			...mapMutations({
 				pagination: 'PAGINATION'
 			}),
@@ -71,6 +75,18 @@
 </script>
 
 <style lang="less" scoped>
+    .col-md-12{
+        position: relative;
+        .add_button{
+            position: absolute;
+            top: 32px;
+            right: 15px;
+            padding: 5px 20px;
+            background-color: #ffbb12;
+            color: #4c4c4c;
+            cursor: pointer;
+        }
+    }
     .user_page {
         padding: 20px 0 30px 0;
         justify-content: center;
