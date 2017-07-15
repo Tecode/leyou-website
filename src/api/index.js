@@ -23,5 +23,11 @@ export const getUserInfoApi = (param) => {
 
 // 保存文章api
 export const saveArticelApi = (param) => {
-	return axios.post('/application/api/userInfo', param);
+	return axios.post('/application/api/addArticle', param);
+};
+
+//获取文章列表
+export const getArticelListApi = ({index, size}) => {
+	console.log(index, size);
+	return axios.get('/application/api/article', {params:{index :index, size: size}});
 };

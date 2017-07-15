@@ -6,6 +6,7 @@ import NavHeader from './modules/NavHeader';
 import Message from './modules/Message';
 import ArticleEdit from './modules/ArticleEdit';
 import Ui from './modules/Ui';
+import ArticleList from './modules/ArticleList';
 
 Vue.use(Vuex);
 
@@ -17,6 +18,7 @@ export function createStore () {
 			Message: Message,
 			ArticleEdit: ArticleEdit,
 			Ui: Ui,
+			ArticleList: ArticleList,
 		}
   })
 }

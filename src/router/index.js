@@ -24,7 +24,7 @@ export function createRouter () {
       { path: '/message/:page(\\d+)?', component: Message },
       { path: '/updatelog/:page(\\d+)?', component: UpdateLog },
       { path: '/updatelogedite/:page(\\d+)?', component: UpdateLogEdite },
-			{ path: '/articleedit/:page(\\d+)?', component: ArticleEdit },
+			{ path: '/articleedit/:id', component: ArticleEdit },
       // { path: '/user/:id', component: UserView },
       // { path: '/', redirect: '/top' }
     ]

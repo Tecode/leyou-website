@@ -3,14 +3,15 @@
         <div class="pull-left title_label">
             <div class="line"></div>
             {{nav_title}}
+
         </div>
-        <div class="input_box pull-left">
+        <div class="input_box pull-left" v-if="placeholder_text">
             <label for="input"></label>
             <input id="input" :placeholder="placeholder_text"/>
         </div>
         <div class="button pull-left">
-            <span>取消限制</span>
-            <span>标记限制</span>
+            <span v-if="butonOne">{{butonOne}}</span>
+            <span v-if="butonOne">{{butonTwo}}</span>
         </div>
     </div>
 </template>
@@ -19,38 +20,43 @@
 	export default {
 		name: 'nav-title',
 		props: [
-          'nav_title',
-          'placeholder_text'],
+			'nav_title',
+			'placeholder_text',
+			'butonOne',
+			'butonTwo'
+		],
 		data () {
 			return {
 				open: true
 			}
 		},
-		computed: {},
-		methods: {}
+		mounted: function () {
+			console.log(this.placeholder_text);
+		},
 	}
 </script>
 
 <style lang="less">
     @import "../../lib/style/color";
-    .page_title{
+
+    .page_title {
         padding-top: 35px;
-        .title_label{
+        .title_label {
             font-size: 22px;
             color: @manager_color06;
             position: relative;
             padding-left: 15px;
         }
-        .line{
+        .line {
             position: absolute;
-            top:5px;
+            top: 5px;
             left: 3px;
             width: 4px;
             height: 24px;
             background-color: @background-color50;
         }
-        .input_box{
-            input{
+        .input_box {
+            input {
                 outline: none;
                 border: 1px solid @manager_color07;
                 height: 26px;
@@ -59,19 +65,19 @@
                 border-radius: 999px;
                 text-indent: 2em;
                 width: 188px;
-                background: url("../../imgs/manager_search_default.png")8px 4px no-repeat;
+                background: url("../../imgs/manager_search_default.png") 8px 4px no-repeat;
                 background-size: 17px;
                 transition: all .4s;
                 color: @text110;
-                &:focus{
-                    background: url("../../imgs/manager_search_hover.png")8px 4px no-repeat;
+                &:focus {
+                    background: url("../../imgs/manager_search_hover.png") 8px 4px no-repeat;
                     background-size: 17px;
                     border: 1px solid @background-color50;
                 }
             }
         }
-        .button{
-            span{
+        .button {
+            span {
                 padding: 3px 14px;
                 line-height: 2.6em;
                 margin-right: 15px;
@@ -80,7 +86,7 @@
                 color: @background-color50;
                 border: 1px solid @background-color50;
                 transition: all .4s;
-                &:hover{
+                &:hover {
                     background-color: @background-color50;
                     color: @color557;
                 }

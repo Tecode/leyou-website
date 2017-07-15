@@ -3,7 +3,7 @@ import { getUserInfoApi } from '../../api';
 
 const LoginRegistration = {
 	state: {
-		activeNav: '/',
+		activeNav: '',
 		userInfo: {},
 	},
 	mutations: {
@@ -22,14 +22,14 @@ const LoginRegistration = {
 				commit('SETUSERINFO', response.data);
 			}))
 			.catch((err) => {
-				commit('OPEN_DIALOG',{
-					title: '错误提示',
-					content: err.response.data.error,
-					button: true,
-					multiple: false,
-					timer: null,
-					callBack: () => { window.location.href = '/' }
-				});
+				// commit('OPEN_DIALOG',{
+				// 	title: '错误提示',
+				// 	content: err.response.data.error,
+				// 	button: true,
+				// 	multiple: false,
+				// 	timer: null,
+				// 	callBack: () => { window.location.href = '/' }
+				// });
 			})
 		}
 	},

@@ -9,13 +9,18 @@
             </div>
         </li>
         <li class="device">
-            <div class="type">文章分类（必选字段）</div>
-            <div class="span_box">
-                <span @click="choiceType(100)" :class="{active: articleType === 100}">电脑端</span>
-                <span @click="choiceType(101)" :class="{active: articleType === 101}">移动端</span>
-                <span @click="choiceType(102)" :class="{active: articleType === 102}">小程序</span>
-                <span @click="choiceType(103)" :class="{active: articleType === 103}">APP客户端</span>
-                <span @click="choiceType(104)" :class="{active: articleType === 104}">PC客户端</span>
+            <div class="type">文章分类（必填字段）</div>
+            <!--<div class="span_box">-->
+                <!--<span @click="choiceType(100)" :class="{active: articleType === 100}">电脑端</span>-->
+                <!--<span @click="choiceType(101)" :class="{active: articleType === 101}">移动端</span>-->
+                <!--<span @click="choiceType(102)" :class="{active: articleType === 102}">小程序</span>-->
+                <!--<span @click="choiceType(103)" :class="{active: articleType === 103}">APP客户端</span>-->
+                <!--<span @click="choiceType(104)" :class="{active: articleType === 104}">PC客户端</span>-->
+            <!--</div>-->
+            <div class="input">
+                <label>
+                    <input id="articleType" @input="articleInput" type="text" v-model="articleType" placeholder="文章分类（多个用逗号隔开）"/>
+                </label>
             </div>
         </li>
         <li class="content">
@@ -77,11 +82,6 @@
 		props: ['id'],
 		components: {
 			AticalTitle
-		},
-		data () {
-			return {
-				open: true
-			}
 		},
 		mounted: function () {
 			const E = window.wangEditor;

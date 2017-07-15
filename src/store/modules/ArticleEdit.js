@@ -10,7 +10,7 @@ import { saveArticelApi } from '../../api';
 const ArticleEdit = {
 	state: {
 		title: '',
-		articleType: 100,
+		articleType: '',
 		author: '',
 		keyWords: '',
 		discript: '',
@@ -37,6 +37,14 @@ const ArticleEdit = {
 				button: false,
 				multiple: false,
 				timer: 3000
+				})
+			}else if (state.articleType === ''){
+				commit('OPEN_DIALOG',{
+					title: '错误提示',
+					content: '文章分类不能为空！',
+					button: false,
+					multiple: false,
+					timer: 3000
 				})
 			} else if (state.author === '') {
 				commit('OPEN_DIALOG',{

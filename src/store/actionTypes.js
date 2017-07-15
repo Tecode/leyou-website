@@ -24,6 +24,9 @@ export const ARTICLE_INPUT = 'ARTICLE_INPUT';
 export const THUMBNAIL_SAVE = 'THUMBNAIL_SAVE';
 //----------文章action
 export const ARTICLE_SAVE = 'ARTICLE_SAVE';
+export const GETARTICLELIST = 'GETARTICLELIST';
+export const SETLIST_ARTICLE_DATA = 'SETLIST_ARTICLE_DATA';
 //----------ui-mutations
 export const OPEN_DIALOG = 'OPEN_DIALOG';
 export const CLOSE_DIALOG = 'CLOSE_DIALOG';
+export const PAGINATION = 'PAGINATION';

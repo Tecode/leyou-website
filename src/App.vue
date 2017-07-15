@@ -51,7 +51,7 @@
             <mu-flat-button v-if="button && multiple" slot="actions" primary @click="closeDialog" label="取消"/>
         </mu-dialog>
         <transition name="fade" mode="out-in">
-            <router-view class="{view: activeNav !== '/'}"></router-view>
+            <router-view :class="{view: activeNav !== '/'}"></router-view>
         </transition>
     </div>
 </template>
@@ -84,7 +84,7 @@
 		},
 		methods: {
 			...mapActions({
-				GETUSERINFO: 'GETUSERINFO'
+				getUserInfo: 'GETUSERINFO'
 			}),
 			...mapMutations({
 				listenerRouting: 'listenerRouting', // 映射 this.listenerRouting() 为 this.$store.commit('listenerRouting')
@@ -98,8 +98,8 @@
 		},
 		created: function () {
 			this.listenerRouting(this.$route.fullPath);
-			if (this.fullPath !=='/'){
-                 this.GETUSERINFO();
+			if (this.activeNav !=='/'){
+                 this.getUserInfo();
             }
 		},
 		data () {

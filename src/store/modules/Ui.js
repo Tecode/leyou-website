@@ -1,6 +1,7 @@
 import {
 	CLOSE_DIALOG,
-	OPEN_DIALOG
+	OPEN_DIALOG,
+	PAGINATION
 } from '../actionTypes'
 
 
@@ -11,6 +12,8 @@ const ArticleEdit = {
 		button: true,
 		multiple: true,
 		content: '',
+		index: 1,
+		size: 10,
 		callBack: () => {},
 	},
 	mutations: {
@@ -20,7 +23,9 @@ const ArticleEdit = {
 			state.content = '';
 			state.button = true;
 			state.multiple = true;
-			state.callBack();
+			if(state.callBack){
+				state.callBack();
+			}
 			state.callBack = () =>{};
 		},
 		[OPEN_DIALOG](state, {
@@ -49,6 +54,10 @@ const ArticleEdit = {
 				}, timer)
 			}
 		},
+		[PAGINATION](state, {index, size}) {
+			state.index = index;
+			state.size = size;
+		}
 	}
 };
 
