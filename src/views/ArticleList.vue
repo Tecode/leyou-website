@@ -82,7 +82,7 @@
             top: 32px;
             right: 15px;
             padding: 5px 20px;
-            background-color: #ffbb12;
+            background-color: #ffcb17;
             color: #4c4c4c;
             cursor: pointer;
         }

@@ -11,15 +11,16 @@
         <li class="device">
             <div class="type">文章分类（必填字段）</div>
             <!--<div class="span_box">-->
-                <!--<span @click="choiceType(100)" :class="{active: articleType === 100}">电脑端</span>-->
-                <!--<span @click="choiceType(101)" :class="{active: articleType === 101}">移动端</span>-->
-                <!--<span @click="choiceType(102)" :class="{active: articleType === 102}">小程序</span>-->
-                <!--<span @click="choiceType(103)" :class="{active: articleType === 103}">APP客户端</span>-->
-                <!--<span @click="choiceType(104)" :class="{active: articleType === 104}">PC客户端</span>-->
+            <!--<span @click="choiceType(100)" :class="{active: articleType === 100}">电脑端</span>-->
+            <!--<span @click="choiceType(101)" :class="{active: articleType === 101}">移动端</span>-->
+            <!--<span @click="choiceType(102)" :class="{active: articleType === 102}">小程序</span>-->
+            <!--<span @click="choiceType(103)" :class="{active: articleType === 103}">APP客户端</span>-->
+            <!--<span @click="choiceType(104)" :class="{active: articleType === 104}">PC客户端</span>-->
             <!--</div>-->
             <div class="input">
                 <label>
-                    <input id="articleType" @input="articleInput" type="text" v-model="articleType" placeholder="文章分类（多个用逗号隔开）"/>
+                    <input id="articleType" @input="articleInput" type="text" v-model="articleType"
+                           placeholder="文章分类（多个用逗号隔开）"/>
                 </label>
             </div>
         </li>
@@ -84,6 +85,9 @@
 			AticalTitle
 		},
 		mounted: function () {
+			if (this.$route.params.id) {
+				this.getArticle(this.$route.params.id)
+			}
 			const E = window.wangEditor;
 			editor = new E('#Edit');
 			editor.customConfig.uploadImgShowBase64 = true;
@@ -130,6 +134,8 @@
 			editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
 			editor.customConfig.uploadImgServer = '/upload';
 			editor.create();
+			// 将创建的对象定为window对象，为了库追加内容
+			window.editor = editor;
 		},
 		computed: {
 			...mapState({
@@ -146,18 +152,23 @@
 			imageOk: function (response, file, fileLis) {
 				this.thumbnail(response.data[0])
 			},
-			getContent: function() {
+			getContent: function () {
 				return editor.txt.html()
-            },
+			},
 			...mapMutations({
 				articleInput: 'ARTICLE_INPUT',
 				choiceType: 'ARTICLE_CHOICE_TYPE',
-				thumbnail: 'THUMBNAIL_SAVE'
+				thumbnail: 'THUMBNAIL_SAVE',
+				reaetAticleStore: 'RESET_ARTICLE_STORE'
 			}),
 			...mapActions({
-				articleSave: 'ARTICLE_SAVE'
+				articleSave: 'ARTICLE_SAVE',
+				getArticle: 'GET_ARTICLE'
 			})
 		},
+		beforeDestroy: function () {
+			this.reaetAticleStore();
+		}
 	}
 </script>
 

@@ -25,13 +25,8 @@
 			'butonOne',
 			'butonTwo'
 		],
-		data () {
-			return {
-				open: true
-			}
-		},
 		mounted: function () {
-			console.log(this.placeholder_text);
+
 		},
 	}
 </script>

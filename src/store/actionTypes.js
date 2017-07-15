@@ -22,10 +22,13 @@ export const SHOW_MESSAGE = 'SHOW_MESSAGE';
 export const ARTICLE_CHOICE_TYPE = 'ARTICLE_CHOICE_TYPE';
 export const ARTICLE_INPUT = 'ARTICLE_INPUT';
 export const THUMBNAIL_SAVE = 'THUMBNAIL_SAVE';
+export const GET_ARTICLE_DA = 'GET_ARTICLE_DA';
+export const RESET_ARTICLE_STORE = 'RESET_ARTICLE_STORE';
 //----------文章action
 export const ARTICLE_SAVE = 'ARTICLE_SAVE';
 export const GETARTICLELIST = 'GETARTICLELIST';
 export const SETLIST_ARTICLE_DATA = 'SETLIST_ARTICLE_DATA';
+export const GET_ARTICLE = 'GET_ARTICLE';
 //----------ui-mutations
 export const OPEN_DIALOG = 'OPEN_DIALOG';
 export const CLOSE_DIALOG = 'CLOSE_DIALOG';
