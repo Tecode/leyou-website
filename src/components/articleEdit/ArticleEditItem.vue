@@ -67,7 +67,7 @@
         </li>
         <li class="tips clearfix">
             <p>提示：编辑完成后记得保存</p>
-            <p class="save" @click="articleSave(getContent)">保存</p>
+            <p class="save" @click="articleSave(callBack)">保存</p>
             <p class="add-tips">新增更新说明</p>
         </li>
     </ul>
@@ -148,12 +148,24 @@
 				content: state => state.ArticleEdit.content,
 			}),
 		},
+		data () {
+			return {
+				callBack: {
+					fn: function () {
+						return editor.txt.html()
+					},
+					goBack: this.back,
+
+				}
+			}
+		},
 		methods: {
 			imageOk: function (response, file, fileLis) {
 				this.thumbnail(response.data[0])
 			},
-			getContent: function () {
-				return editor.txt.html()
+			// 回调函数返回文章列表
+			back: function () {
+				this.$router.push('/articlelist');
 			},
 			...mapMutations({
 				articleInput: 'ARTICLE_INPUT',

@@ -14,10 +14,6 @@ import {
 	updateArticelApi
 } from '../../api';
 
-import Router from 'vue-router';
-const routre = new Router();
-
-
 const ArticleEdit = {
 	state: {
 		aid: '',
@@ -62,7 +58,7 @@ const ArticleEdit = {
 		}
 	},
 	actions: {
-		[ARTICLE_SAVE]({state, commit, rootState}, fn){
+		[ARTICLE_SAVE]({state, commit, rootState}, callBack){
 			if (state.title.length === 0) {
 				commit('OPEN_DIALOG', {
 					title: '错误提示',
@@ -103,7 +99,7 @@ const ArticleEdit = {
 					multiple: false,
 					timer: 3000
 				})
-			} else if (fn() === '<p><br></p>') {
+			} else if (callBack.fn() === '<p><br></p>') {
 				commit('OPEN_DIALOG', {
 					title: '错误提示',
 					content: '文章内容不能为空！',
@@ -120,7 +116,7 @@ const ArticleEdit = {
 						keyWords: state.keyWords,
 						discript: state.discript,
 						updateImage: state.updateImage,
-						content: fn(),
+						content: callBack.fn(),
 					})
 					.then(((response) => {
 						commit('OPEN_DIALOG', {
@@ -132,7 +128,7 @@ const ArticleEdit = {
 						});
 						// 返回文章列表页
 						setTimeout(() => {
-							window.location.href = '/articlelist';
+							callBack.goBack();
 						}, 2000)
 					}))
 					.catch((err) => {
@@ -154,7 +150,7 @@ const ArticleEdit = {
 						keyWords: state.keyWords,
 						discript: state.discript,
 						updateImage: state.updateImage,
-						content: fn(),
+						content: callBack.fn(),
 					})
 					.then(((response) => {
 						commit('OPEN_DIALOG', {
@@ -166,7 +162,7 @@ const ArticleEdit = {
 						});
 						// 返回文章列表页
 						setTimeout(() => {
-							window.location.href = '/articlelist';
+							callBack.goBack();
 						}, 2000)
 					}))
 					.catch((err) => {
