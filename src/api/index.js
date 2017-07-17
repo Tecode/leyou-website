@@ -27,7 +27,6 @@ export const saveArticelApi = (param) => {
 };
 // 更新文章api
 export const updateArticelApi = (id, param) => {
-	console.log(param);
 	return axios.put(`/application/api/article/${id}`, param);
 };
 //获取文章列表

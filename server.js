@@ -61,26 +61,6 @@ if (isProd) {
 const serve = (path, cache) => express.static(resolve(path), {
 	maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 });
-
-const postIpInfo = (param) => {
-	axios.post('/application/api/analysisIp', param)
-	.then((respose) => {
-		console.log(respose.data);
-	})
-	.catch((err) => {
-		console.log(err.response.data);
-	})
-};
-const deviceInfo = (param) => {
-	console.log(param, 'param--------------');
-	axios.post('/application/api/analysisInfo', param)
-	.then((respose) => {
-		console.log(respose.data);
-	})
-	.catch((err) => {
-		console.log(err.response.data);
-	})
-};
 // 遍历图片
 const objForEach = (obj, fn) => {
 	let key, result;
@@ -186,48 +166,6 @@ function render(req, res) {
 	}, function (error) {
 		// Do something with response error
 		return Promise.reject(error);
-	});
-	// console.log(req.cookies['aming_token']);
-	let ip = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-	if (ip.substr(0, 7) === "::ffff:") {
-		ip = ip.substr(7)
-	}
-	if (ip !== '127.0.0.1') {
-		// 获取登录设备信息
-		deviceInfo({
-			platform: req.useragent.platform,
-			browser: req.useragent.browser,
-			isiPad: req.useragent.isiPad,
-			isiPhone: req.useragent.isiPhone,
-			isAndroid: req.useragent.isAndroid,
-			isMobile: req.useragent.isMobile,
-			isIE: req.useragent.isIE,
-			isFirefox: req.useragent.isFirefox,
-			isEdge: req.useragent.isEdge,
-			isChrome: req.useragent.isChrome,
-			isSafari: req.useragent.isSafari,
-			isWindows: req.useragent.isWindows,
-			isLinux: req.useragent.isLinux,
-			isMac: req.useragent.isMac,
-			isUC: req.useragent.isUC,
-			version: req.useragent.version,
-		});
-	}
-	axios.post(`http://ip.taobao.com/service/getIpInfo.php?ip=${ip}`)
-	.then(({data}) => {
-		if (ip !== '127.0.0.1') {
-			postIpInfo({
-				country: data.data.country,
-				country_id: data.data.country_id,
-				region: data.data.region,
-				city: data.data.city,
-				county: data.county,
-				ip: data.data.ip,
-			});
-		}
-	})
-	.catch((err) => {
-		console.log(err.response.data);
 	});
 
 	const s = Date.now();
