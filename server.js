@@ -7,7 +7,6 @@ const compression = require('compression');
 const resolve = file => path.resolve(__dirname, file);
 const {createBundleRenderer} = require('vue-server-renderer');
 const useragent = require('express-useragent');
-const axios = require('axios');
 const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
 
@@ -117,7 +116,7 @@ const saveFiles = (req) => {
 				// 将临时文件保存为正式文件
 				fs.renameSync(tempFilePath, fullFileName);
 				// 存储链接
-				imgLinks.push('/image/' + fileName)
+				imgLinks.push(`${!isProd ? 'https://admin.soscoon.com' : ''}/image/` + fileName)
 			});
 			// // 重新设置静态文件缓存
 			// setStaticCache();
@@ -155,18 +154,6 @@ const microCache = LRU({
 const isCacheable = req => useMicroCache;
 
 function render(req, res) {
-	// axios全局配置
-	// axios.defaults.headers.common['Content-Type'] = 'application/json';
-	axios.defaults.headers.common['token'] = req.cookies['aming_token'] || {};
-	// 拦截请求
-	axios.interceptors.response.use(function (response) {
-		// console.log(response.data, '---------------');
-		// Do something with response data
-		return response;
-	}, function (error) {
-		// Do something with response error
-		return Promise.reject(error);
-	});
 
 	const s = Date.now();
 
