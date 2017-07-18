@@ -116,7 +116,7 @@ const saveFiles = (req) => {
 				// 将临时文件保存为正式文件
 				fs.renameSync(tempFilePath, fullFileName);
 				// 存储链接
-				imgLinks.push(`${!isProd ? 'https://admin.soscoon.com' : ''}/image/` + fileName)
+				imgLinks.push(`${isProd ? 'https://admin.soscoon.com' : ''}/image/` + fileName)
 			});
 			// // 重新设置静态文件缓存
 			// setStaticCache();
