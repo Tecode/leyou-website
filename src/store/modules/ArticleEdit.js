@@ -22,7 +22,8 @@ const ArticleEdit = {
 		author: '',
 		keyWords: '',
 		discript: '',
-		updateImage: '69',
+		updateImage: '',
+		fileName: '',
 		content: '<p></p>'
 	},
 	mutations: {
@@ -44,6 +45,7 @@ const ArticleEdit = {
 			state.discript = data.article_discript;
 			state.updateImage = data.article_imageurl;
 			state.content = data.article_content;
+			state.fileName = data.file_name;
 			window.editor.txt.append(data.article_content);
 		},
 		[RESET_ARTICLE_STORE](state) {
@@ -54,11 +56,13 @@ const ArticleEdit = {
 			state.keyWords = '';
 			state.discript = '';
 			state.updateImage = '';
+			state.fileName = '';
 			state.content = '<p></p>';
 		}
 	},
 	actions: {
 		[ARTICLE_SAVE]({state, commit, rootState}, callBack){
+			console.log(state.fileName, '------------------');
 			if (state.title.length === 0) {
 				commit('OPEN_DIALOG', {
 					title: '错误提示',
@@ -99,10 +103,10 @@ const ArticleEdit = {
 					multiple: false,
 					timer: 3000
 				})
-			} else if (callBack.fn() === '<p><br></p>') {
+			} else if (callBack.fn() === '<p><br></p>' && state.fileName === '') {
 				commit('OPEN_DIALOG', {
 					title: '错误提示',
-					content: '文章内容不能为空！',
+					content: '请填写文章的名称或者在编辑框编辑内容',
 					button: false,
 					multiple: false,
 					timer: 3000
@@ -116,6 +120,7 @@ const ArticleEdit = {
 						keyWords: state.keyWords,
 						discript: state.discript,
 						updateImage: state.updateImage,
+						fileName: state.fileName,
 						content: callBack.fn(),
 					})
 					.then(((response) => {
@@ -150,6 +155,7 @@ const ArticleEdit = {
 						keyWords: state.keyWords,
 						discript: state.discript,
 						updateImage: state.updateImage,
+						fileName: state.fileName === '',
 						content: callBack.fn(),
 					})
 					.then(((response) => {

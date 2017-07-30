@@ -20,28 +20,43 @@
             <div class="input">
                 <label>
                     <input id="articleType" @input="articleInput" type="text" v-model="articleType"
-                           placeholder="文章分类（多个用逗号隔开）"/>
+                           placeholder="文章分类（多个用中文逗号隔开）"/>
                 </label>
             </div>
         </li>
         <li class="content">
             <div class="title">发表文章说明</div>
             <div>
+                <div>
+                    <span class="delete">编辑</span>
+                </div>
                 <label>
                     <input type="text" id="author" @input="articleInput" v-model="author" placeholder="编辑"/>
-                    <span class="delete">编辑</span>
                 </label>
             </div>
             <div>
+                <div>
+                    <span class="keywords">关键词</span>
+                </div>
                 <label>
                     <input type="text" id="keyWords" @input="articleInput" v-model="keyWords" placeholder="关键词"/>
-                    <span class="keywords">关键词</span>
                 </label>
             </div>
             <div>
-                <label>
-                    <input id="discript" @input="articleInput" type="text" v-model="discript" placeholder="文章描述"/>
+                <div>
                     <span class="discript">文章描述</span>
+                </div>
+                <label>
+                    <textarea id="discript" @input="articleInput" v-model="discript" placeholder="文章描述">
+                    </textarea>
+                </label>
+            </div>
+            <div>
+                <div>
+                    <span class="keywords">文章名称（需要后缀名<a href="#">编辑文章</a>）</span>
+                </div>
+                <label>
+                    <input type="text" id="fileName" @input="articleInput" v-model="fileName" placeholder="文件名+后缀名"/>
                 </label>
             </div>
         </li>
@@ -146,6 +161,7 @@
 				discript: state => state.ArticleEdit.discript,
 				updateImage: state => state.ArticleEdit.updateImage,
 				content: state => state.ArticleEdit.content,
+				fileName: state => state.ArticleEdit.fileName,
 			}),
 		},
 		data () {
@@ -222,7 +238,15 @@
             height: 34px;
             outline: none;
             text-indent: .5em;
-            margin: 10px 0;
+            margin: 5px 0 15px 0;
+            border: 1px solid @color204;
+        }
+        textarea{
+            width: 720px;
+            height: 90px;
+            outline: none;
+            text-indent: .5em;
+            margin: 5px 0 15px 0;
             border: 1px solid @color204;
         }
         .version {
@@ -262,50 +286,10 @@
             label {
                 position: relative;
             }
-            .delete {
-                position: absolute;
-                top: -7px;
-                right: 0;
-                width: 60px;
-                height: 34px;
-                background-color: @background-color50;
-                text-align: center;
+            .delete, .keywords, .discript {
                 line-height: 2.4em;
-                transition: all .4s;
-                cursor: pointer;
-                &:hover {
-                    background-color: @background-color350;
-                }
-            }
-            .keywords {
-                position: absolute;
-                top: -7px;
-                right: 0;
-                width: 70px;
-                height: 34px;
+                padding: 5px 20px 5px 10px;
                 background-color: @background-color50;
-                text-align: center;
-                line-height: 2.4em;
-                transition: all .4s;
-                cursor: pointer;
-                &:hover {
-                    background-color: @background-color350;
-                }
-            }
-            .discript {
-                position: absolute;
-                top: -7px;
-                right: 0;
-                width: 80px;
-                height: 34px;
-                background-color: @background-color50;
-                text-align: center;
-                line-height: 2.4em;
-                transition: all .4s;
-                cursor: pointer;
-                &:hover {
-                    background-color: @background-color350;
-                }
             }
         }
         .tips {
