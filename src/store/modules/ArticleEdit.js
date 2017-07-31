@@ -155,7 +155,7 @@ const ArticleEdit = {
 						keyWords: state.keyWords,
 						discript: state.discript,
 						updateImage: state.updateImage,
-						fileName: state.fileName === '',
+						fileName: state.fileName,
 						content: callBack.fn(),
 					})
 					.then(((response) => {
