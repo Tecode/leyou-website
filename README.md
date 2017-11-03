@@ -1,44 +1,82 @@
+
+# 基于vue的博客后台管理项目
+![image](https://admin.soscoon.com/image/mysite-time1509679684444.png)
+## [Demo](https://www.soscoon.com)
+## 安装
+
 ``` bash
-# install dependencies
+
+# 安装node模块
 npm install # or yarn
 
-# serve in dev mode, with hot reload at localhost:8080
+# 在开发模式下运行项目 localhost:8080
 npm run dev
 
-# build for production
+# 发布正式环境构建项目
 npm run build
 
-# serve in production mode
+# 在产品模式下运行项目
 npm start
-```
-```bash
-webpack2
 
-{
-  // ...
-  rules: {
-    loaders: [
-      // ...
-      {
-        test: /muse-ui.src.*?js$/,
-        loader: 'babel-loader'
-      }
-    ]
-  },
-  resolve: {
-    // ...
-    alias: {
-      'muse-components': 'muse-ui/src'
-    }
-  }
-}
-main.js
-
-import Vue from 'vue'
-import 'muse-components/styles/base.less' // 加载基础的样式
-import appBar from 'muse-components/appBar'
-import avatar from 'muse-components/avatar'
-// ..
-Vue.component(appBar.name, appBar)
-Vue.component(avatar.name, avatar)
 ```
+
+
+## 图片展示
+> * 登录页
+
+![image](https://admin.soscoon.com/image/mysite-time1509699670792.png)
+> * 首页
+
+![image](https://admin.soscoon.com/image/mysite-time1509701705885.png)
+> * 用管理
+
+![image](https://admin.soscoon.com/image/mysite-time1509701816648.png)
+> * 内容管理
+
+![image](https://admin.soscoon.com/image/mysite-time1509701851617.png)
+
+## 技术栈
+
+> 项目地址：http://www.soscoon.com
+
+### 前端
+
+> - vue
+> - vue-router
+> - vuex
+> - axios
+> - es6
+> - Node(Express作为服务器启动应用)
+> - webpack
+> - element-ui 1.4.0
+
+
+### 后端
+
+> - PHP7
+> - Laravel5.4
+> - JWT(JSON WEB TOKEN)
+
+### 数据库
+
+> - Mysql
+
+### Dillinger编辑器
+
+> - angularJS 1.3.0
+> - gulp 3.9.0
+
+# 环境
+
+### 本地开发
+
+> - 操作系统：Windows10
+> - 服务器：Apache
+> - 代理服务器: nginx
+> - 前端服务器：Express
+
+### 线上正式
+
+> - 操作系统：CentOS7
+> - 服务器：nginx
+> - 前端服务器：Express
