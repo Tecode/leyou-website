@@ -9,7 +9,7 @@
 # 安装node模块
 npm install # or yarn
 
-# 在开发模式下运行项目 localhost:8080
+# 在开发模式下运行项目 localhost:8088
 npm run dev
 
 # 发布正式环境构建项目
